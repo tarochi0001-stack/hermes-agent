@@ -149,7 +149,9 @@ export const zh: Translations = {
       noSpeechDetected: '没有检测到语音',
       playbackFailed: '语音播放失败',
       recordingFailed: '语音录制失败',
-      transcriptionFailed: '语音转写失败',
+      reviewBeforeSending: '此语音命令可能会更改外部状态。请检查转录内容后手动发送。',
+      reviewRequired: '语音命令需要确认',
+      transcriptionFailed: '语音转录失败',
       transcriptionUnavailable: '语音转写暂不可用。',
       tryRecordingAgain: '请再录一次。',
       unavailable: '语音不可用'
@@ -1841,6 +1843,10 @@ export const zh: Translations = {
       '调整或继续'
     ],
     startVoice: '开始语音对话',
+    voiceConversation: 'Hermes 实时语音',
+    localVoice: '本地语音',
+    liveVoiceHint: '自然说话。按空格键结束本轮发言。',
+    starting: '正在启动实时语音',
     queueMessage: '排队消息',
     steer: '引导当前运行',
     stop: '停止',

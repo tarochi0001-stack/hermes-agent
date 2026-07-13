@@ -4,12 +4,13 @@ import { useI18n } from '@/i18n'
 import { chatMessageText } from '@/lib/chat-messages'
 import { triggerHaptic } from '@/lib/haptics'
 import { resetBrowseState } from '@/store/composer-input-history'
-import { notifyError } from '@/store/notifications'
+import { notify, notifyError } from '@/store/notifications'
 import { $messages } from '@/store/session'
 import { $autoSpeakReplies, setAutoSpeakReplies } from '@/store/voice-prefs'
 
 import { onComposerVoiceToggleRequest } from '../focus'
 import type { ChatBarProps } from '../types'
+import { voiceTranscriptNeedsReview } from '../voice-safety'
 
 import { useAutoSpeakReplies } from './use-auto-speak-replies'
 import { useVoiceConversation } from './use-voice-conversation'
@@ -87,6 +88,19 @@ export function useComposerVoice({
 
   const submitVoiceTurn = async (text: string) => {
     if (busy) {
+      return
+    }
+
+    if (voiceTranscriptNeedsReview(text)) {
+      insertText(text)
+      focusInput()
+      setVoiceConversationActive(false)
+      notify({
+        kind: 'warning',
+        title: t.notifications.voice.reviewRequired,
+        message: t.notifications.voice.reviewBeforeSending
+      })
+
       return
     }
 

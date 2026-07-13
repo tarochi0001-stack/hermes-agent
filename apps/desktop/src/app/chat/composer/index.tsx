@@ -42,6 +42,7 @@ import { useComposerUrlDialog } from './hooks/use-composer-url-dialog'
 import { useComposerVoice } from './hooks/use-composer-voice'
 import { useSlashCompletions } from './hooks/use-slash-completions'
 import { useSessionStatusPresence } from './hooks/use-status-presence'
+import { LiveVoicePanel } from './live-voice-panel'
 import { QueuePanel } from './queue-panel'
 import {
   composerPlainText,
@@ -845,6 +846,15 @@ export function ChatBar({
               : undefined
           }
         >
+          <LiveVoicePanel
+            active={voiceConversationActive}
+            level={conversation.level}
+            muted={conversation.muted}
+            onEnd={endConversation}
+            onStopTurn={conversation.stopTurn}
+            onToggleMute={conversation.toggleMute}
+            status={conversation.status}
+          />
           {showHelpHint && <HelpHint />}
           {trigger && !argStageEmpty && (
             <ComposerTriggerPopover

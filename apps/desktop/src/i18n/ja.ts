@@ -97,7 +97,8 @@ export const ja = defineLocale({
       remoteSignInHint: signInLabel =>
         `保存済みのリモートブラウザセッションからサインアウトし、${signInLabel}を開きます。代わりにバンドルされたバックエンドに切り替えるには「ローカルゲートウェイを使用」を選択してください。`,
       signOutAndSignIn: 'サインアウトして再サインイン',
-      remoteFailureHint: '「ゲートウェイ設定」でゲートウェイの URL とサインインを確認するか、ローカルゲートウェイに切り替えてください。',
+      remoteFailureHint:
+        '「ゲートウェイ設定」でゲートウェイの URL とサインインを確認するか、ローカルゲートウェイに切り替えてください。',
       hideRecentLogs: '最近のログを非表示',
       showRecentLogs: '最近のログを表示',
       signedInTitle: 'サインインしました',
@@ -153,7 +154,10 @@ export const ja = defineLocale({
       noSpeechDetected: '音声が検出されませんでした',
       playbackFailed: '音声再生に失敗しました',
       recordingFailed: '音声録音に失敗しました',
-      transcriptionFailed: '音声文字起こしに失敗しました',
+      reviewBeforeSending:
+        'この音声コマンドは外部の状態を変更する可能性があります。文字起こしを確認してから手動で送信してください。',
+      reviewRequired: '音声コマンドの確認が必要です',
+      transcriptionFailed: '音声の文字起こしに失敗しました',
       transcriptionUnavailable: '音声文字起こしはまだ利用できません。',
       tryRecordingAgain: 'もう一度録音してください。',
       unavailable: '音声は利用できません'
@@ -1605,6 +1609,10 @@ export const ja = defineLocale({
       '調整または続行'
     ],
     startVoice: '音声会話を開始',
+    voiceConversation: 'Hermes Live',
+    localVoice: 'ローカル音声',
+    liveVoiceHint: '自然に話してください。Spaceで発話を終了します。',
+    starting: 'ライブ音声を開始中',
     queueMessage: 'メッセージをキューに入れる',
     stop: '停止',
     send: '送信',

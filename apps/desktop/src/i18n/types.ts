@@ -193,6 +193,8 @@ export interface Translations {
       noSpeechDetected: string
       playbackFailed: string
       recordingFailed: string
+      reviewBeforeSending: string
+      reviewRequired: string
       transcriptionFailed: string
       transcriptionUnavailable: string
       tryRecordingAgain: string
@@ -1375,6 +1377,10 @@ export interface Translations {
     newSessionPlaceholders: readonly string[]
     followUpPlaceholders: readonly string[]
     startVoice: string
+    voiceConversation: string
+    localVoice: string
+    liveVoiceHint: string
+    starting: string
     queueMessage: string
     steer: string
     stop: string

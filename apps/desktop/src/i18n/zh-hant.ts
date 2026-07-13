@@ -149,7 +149,9 @@ export const zhHant = defineLocale({
       noSpeechDetected: '未偵測到語音',
       playbackFailed: '語音播放失敗',
       recordingFailed: '語音錄製失敗',
-      transcriptionFailed: '語音轉寫失敗',
+      reviewBeforeSending: '此語音指令可能會變更外部狀態。請檢查轉錄內容後手動傳送。',
+      reviewRequired: '語音指令需要確認',
+      transcriptionFailed: '語音轉錄失敗',
       transcriptionUnavailable: '語音轉寫暫不可用。',
       tryRecordingAgain: '請再錄製一次。',
       unavailable: '語音不可用'
@@ -1556,6 +1558,10 @@ export const zhHant = defineLocale({
       '調整或繼續'
     ],
     startVoice: '開始語音對話',
+    voiceConversation: 'Hermes 即時語音',
+    localVoice: '本機語音',
+    liveVoiceHint: '自然說話。按空白鍵結束本輪發言。',
+    starting: '正在啟動即時語音',
     queueMessage: '排隊訊息',
     stop: '停止',
     send: '傳送',

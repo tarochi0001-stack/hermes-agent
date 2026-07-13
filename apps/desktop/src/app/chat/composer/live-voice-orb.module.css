@@ -1,0 +1,142 @@
+/* Adapted from amunozdev/voiceorbs Pulse Orb (MIT). */
+.orb {
+  --orb-level: 0;
+  --orb-from: #38bdf8;
+  --orb-to: #14b8a6;
+  position: relative;
+  display: grid;
+  width: clamp(8.5rem, 18vw, 12rem);
+  aspect-ratio: 1;
+  place-items: center;
+  isolation: isolate;
+}
+
+.glow,
+.core,
+.ring,
+.arc {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.glow {
+  width: 82%;
+  height: 82%;
+  background:
+    radial-gradient(48% 48% at 36% 32%, color-mix(in oklab, var(--orb-from), transparent 28%), transparent 72%),
+    radial-gradient(52% 52% at 66% 70%, color-mix(in oklab, var(--orb-to), transparent 34%), transparent 74%);
+  filter: blur(20px);
+  opacity: calc(0.55 + var(--orb-level) * 0.38);
+  transform: scale(calc(0.96 + var(--orb-level) * 0.18));
+  transition:
+    transform 100ms linear,
+    opacity 180ms ease;
+}
+
+.core {
+  width: 42%;
+  height: 42%;
+  background: radial-gradient(
+    120% 120% at 32% 28% in oklab,
+    white 0%,
+    var(--orb-from) 32%,
+    var(--orb-to) 78%,
+    #052c3b 100%
+  );
+  box-shadow:
+    inset -7px -10px 18px rgb(2 21 30 / 0.6),
+    inset 4px 5px 10px rgb(255 255 255 / 0.42),
+    0 18px 52px -15px color-mix(in oklab, var(--orb-to), transparent 28%);
+  transform: scale(calc(1 + var(--orb-level) * 0.16));
+  transition:
+    transform 100ms linear,
+    filter 240ms ease;
+}
+
+.core::after {
+  content: '';
+  position: absolute;
+  inset: 10%;
+  border-radius: inherit;
+  background: radial-gradient(circle at 32% 24%, rgb(255 255 255 / 0.8), transparent 34%);
+}
+
+.ring {
+  width: 42%;
+  height: 42%;
+  border: 1px solid color-mix(in oklab, var(--orb-from) 58%, var(--orb-to));
+  opacity: 0;
+  animation: emit 2.8s cubic-bezier(0.16, 0.84, 0.44, 1) infinite;
+}
+
+.ring2 {
+  animation-delay: -0.95s;
+}
+.ring3 {
+  animation-delay: -1.9s;
+}
+
+.arc {
+  width: 56%;
+  height: 56%;
+  background: conic-gradient(from 0deg, transparent 28%, var(--orb-from), var(--orb-to), transparent 80%);
+  opacity: 0;
+  -webkit-mask: radial-gradient(closest-side, transparent 88%, #000 92%, #000 96%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 88%, #000 92%, #000 96%, transparent 100%);
+  animation: spin 2.1s linear infinite;
+}
+
+.orb[data-state='connecting'] .arc,
+.orb[data-state='thinking'] .arc {
+  opacity: 0.95;
+}
+.orb[data-state='thinking'] .arc {
+  animation-duration: 1.25s;
+}
+.orb[data-state='listening'] .ring,
+.orb[data-state='speaking'] .ring {
+  opacity: 1;
+}
+.orb[data-state='speaking'] .ring {
+  animation-duration: 1.65s;
+}
+.orb[data-state='disabled'] {
+  filter: grayscale(0.85);
+  opacity: 0.48;
+}
+.orb[data-state='disabled'] .arc,
+.orb[data-state='disabled'] .ring {
+  animation-play-state: paused;
+}
+
+@keyframes emit {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  15% {
+    opacity: calc(0.3 + var(--orb-level) * 0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.45);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .arc {
+    animation: none;
+  }
+  .orb[data-state='listening'] .ring,
+  .orb[data-state='speaking'] .ring {
+    opacity: 0.35;
+    transform: scale(1.6);
+  }
+}

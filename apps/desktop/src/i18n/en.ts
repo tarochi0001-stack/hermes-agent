@@ -153,6 +153,9 @@ export const en: Translations = {
       noSpeechDetected: 'No speech detected',
       playbackFailed: 'Voice playback failed',
       recordingFailed: 'Voice recording failed',
+      reviewBeforeSending:
+        'This voice command may change external state. Review the transcript, then send it manually.',
+      reviewRequired: 'Voice command needs review',
       transcriptionFailed: 'Voice transcription failed',
       transcriptionUnavailable: 'Voice transcription is not available yet.',
       tryRecordingAgain: 'Try recording again.',
@@ -540,8 +543,7 @@ export const en: Translations = {
       localDesc: 'Start a private Hermes backend on localhost. This is the default and works offline.',
       remoteTitle: 'Remote gateway',
       remoteDesc: 'Connect this desktop shell to a remote Hermes backend.',
-      remoteAuthHint:
-        'Hosted gateways use OAuth or a username and password; self-hosted ones may use a session token.',
+      remoteAuthHint: 'Hosted gateways use OAuth or a username and password; self-hosted ones may use a session token.',
       cloudTitle: 'Hermes Cloud',
       cloudDesc: 'Sign in once to Hermes Cloud and pick from the agents on your account — no URL to paste.',
       cloudSignInTitle: 'Hermes Cloud',
@@ -1666,6 +1668,10 @@ export const en: Translations = {
       'Adjust or continue'
     ],
     startVoice: 'Start voice conversation',
+    voiceConversation: 'Hermes Live',
+    localVoice: 'Local voice',
+    liveVoiceHint: 'Speak naturally. Press Space to finish your turn.',
+    starting: 'Starting live voice',
     queueMessage: 'Queue message',
     steer: 'Steer the current run',
     stop: 'Stop',
