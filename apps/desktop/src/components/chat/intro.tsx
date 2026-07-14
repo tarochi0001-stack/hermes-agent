@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { requestVoiceToggle } from '@/app/chat/composer/focus'
 import { LiveVoiceOrb } from '@/app/chat/composer/live-voice-orb'
 import { capitalize, normalize } from '@/lib/text'
 
@@ -181,16 +182,21 @@ export function Intro({ personality, seed }: IntroProps) {
 
   return (
     <div
-      className="pointer-events-none flex w-full min-w-0 flex-col items-center justify-center px-0.5 py-6 text-center text-muted-foreground sm:px-6 lg:px-8"
+      className="flex w-full min-w-0 flex-col items-center justify-center px-0.5 py-6 text-center text-muted-foreground sm:px-6 lg:px-8"
       data-slot="aui_intro"
     >
       <div className="w-full min-w-0">
         <p className="mb-6 text-[length:var(--conversation-text-font-size)] font-medium text-foreground">
           {greetingForNow()}
         </p>
-        <div className="mb-7 flex justify-center">
+        <button
+          className="mx-auto mb-7 flex cursor-pointer justify-center rounded-full transition-transform hover:scale-105 active:scale-95"
+          onClick={requestVoiceToggle}
+          title="Start voice conversation"
+          type="button"
+        >
           <LiveVoiceOrb level={0.35} state="connecting" />
-        </div>
+        </button>
         <p className="m-0 text-center leading-normal tracking-tight">{copy.body}</p>
       </div>
     </div>
